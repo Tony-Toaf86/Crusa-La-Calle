@@ -16,6 +16,8 @@ public class Vehiculo extends Coordenada {
     public void DibujaVehiculo(Graphics g) {
         g.drawImage(imagen, x, y, null);
     }
+
+    
     
 
     public void setImagen(String ruta) {
@@ -24,16 +26,37 @@ public class Vehiculo extends Coordenada {
         altoImg = imagen.getHeight(null);
     }
 
-    //mover vehiculos con el timer 
-    public void moverVehiculos() {
+    //metodos para mover vehiculos
+    public void moverVehiculosEjeXDere() {
         x += 10;
         if (x > 1000) {
             x = -anchoImg; 
         }
        
     }
-
-    public String toString() {
-        return super.toString();
+    public void moverVehiculosEjeXIza() {
+        x -= 10;
+        if (x < -anchoImg) {
+            x = 1000; 
+        }
+       
     }
+
+    public void moverVehiculosEjeYAbajo() {
+        y += 10;
+        if (y > 600) {
+            y = -altoImg; 
+        }
+       
+    }
+
+    public void moverVehiculosEjeYArriba() {
+        y -= 10;
+        if (y < -altoImg) {
+            y = 600; 
+        }
+       
+    }
+
+   
 }
