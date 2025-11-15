@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Moneda
+comment1.params=x\ y\ ruta
+comment1.target=Moneda(int,\ int,\ java.lang.String)
+comment2.params=g
+comment2.target=void\ DibujaMoneda(java.awt.Graphics)
+comment3.params=ruta
+comment3.target=void\ setImagen(java.lang.String)
+comment4.params=
+comment4.target=void\ animarMoneda()
+comment5.params=anchoPanel\ altoPanel
+comment5.target=void\ cambiarPosicionMoneda(int,\ int)
+numComments=6

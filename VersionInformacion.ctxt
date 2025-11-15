@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=VersionInformacion
+comment1.params=
+comment1.target=VersionInformacion()
+comment2.params=texto
+comment2.target=javax.swing.JLabel\ crearEtiqueta(java.lang.String)
+comment3.params=args
+comment3.target=void\ main(java.lang.String[])
+numComments=4

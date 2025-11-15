@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Coordenada
+comment1.params=x\ y\ ruta
+comment1.target=Coordenada(int,\ int,\ java.lang.String)
+comment2.params=g
+comment2.target=void\ dibujar(java.awt.Graphics)
+comment3.params=d\ h
+comment3.target=int\ generaAleatorio(int,\ int)
+numComments=4

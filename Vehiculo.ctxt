@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Vehiculo
+comment1.params=x\ y\ ruta
+comment1.target=Vehiculo(int,\ int,\ java.lang.String)
+comment2.params=g
+comment2.target=void\ DibujaVehiculo(java.awt.Graphics)
+comment3.params=ruta
+comment3.target=void\ setImagen(java.lang.String)
+comment4.params=
+comment4.target=void\ moverVehiculos()
+comment5.params=
+comment5.target=java.lang.String\ toString()
+numComments=6
