@@ -9,7 +9,7 @@ public class Frame extends JFrame {
         add(miPanel);
 
         setSize(miPanel.getWidth(), miPanel.getHeight());
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE); // Cierra solo esta ventana
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
     }
 }

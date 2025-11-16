@@ -12,7 +12,6 @@ public class Moneda extends Coordenada {
         anchoImg = imagen.getWidth(null);
         altoImg = imagen.getHeight(null);
     }
-
     public void DibujaMoneda(Graphics g) {
         g.drawImage(imagen, x, y, null);
     }
@@ -23,15 +22,5 @@ public class Moneda extends Coordenada {
         altoImg = imagen.getHeight(null);
     }
 
-  
-    public void animarMoneda() {
-     
-    }
 
-    public void cambiarPosicionMoneda(int anchoPanel, int altoPanel) {
-        x = (int) (generaAleatorio(altoPanel, anchoPanel)) ;
-        y = (int) (generaAleatorio(altoPanel, altoPanel));
-    }
-
-    
 }

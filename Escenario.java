@@ -33,6 +33,12 @@ public class Escenario extends JPanel implements KeyListener, ActionListener {
     String r_motoL = "imagenes/vehiculos/Lmoto.png";
     String r_camion_rojoL = "imagenes/vehiculos/Lcamion_rojo.png";
 
+    // ruta elementos vehiculos arriba
+    String r_camion_grisU = "imagenes/vehiculos/up/Ucamion_gris.png";
+
+    // rutas elementos vehiculos abajo
+    String r_camion_grisD = "imagenes/vehiculos/down/Dcamion_gris.png";
+
     // Atributos ganas
     String r_moneda = "imagenes/atributos/monedapuntos.png";
     String r_esfera = "imagenes/atributos/esfera.gif";
@@ -44,25 +50,28 @@ public class Escenario extends JPanel implements KeyListener, ActionListener {
         monedas = new ArrayList<>();
 
         // fondo aleatorio
-        int fondo_Aleatorio = 20;// generaAleatorio(1, 30);
+        int fondo_Aleatorio =  generaAleatorio(1, 30);
 
         if (fondo_Aleatorio <= 10) {
             miFondo = new Fondo(0, 0, r_fondo1);
             dibujarVehiculosDerecha(50, 180);
-            miJugador = new Jugador(400, 100, rutaJugador);
+            dibujarVehiculosIzquierda(0, 130);
+            miJugador = new Jugador(500, 40, rutaJugador);
 
-        } else if (fondo_Aleatorio == 20) {
+        } else if (fondo_Aleatorio <= 20) {
             miFondo = new Fondo(0, 0, r_fondo2);
-            dibujarVehiculosDerecha(100, 200); 
+            dibujarVehiculosDerecha(100, 200);
             dibujarVehiculosDerecha(-400, 350);
             dibujarVehiculosIzquierda(0, 100);
             dibujarVehiculosIzquierda(0, 470);
-            miJugador = new Jugador(400, 100, rutaJugador);
+            miJugador = new Jugador(500, 270, rutaJugador);
 
         } else {
             miFondo = new Fondo(0, 0, r_fondo3);
             dibujarVehiculosDerecha(200, 120);
-            miJugador = new Jugador(400, 100, rutaJugador);
+            dibujarVehiculosAbajo(350, 0);
+            dibujarVehiculosArriba(680, 0);
+            miJugador = new Jugador(300, 250, rutaJugador);
         }
 
         setFocusable(true);
@@ -78,6 +87,26 @@ public class Escenario extends JPanel implements KeyListener, ActionListener {
         setSize(ancho, alto);
     }
 
+    public void dibujarVehiculosArriba(int posx, int posy) { // metodo para dibujar hacia arriba
+        int opcion = generaAleatorio(1, 2);
+
+        if (opcion == 1) {
+            vehiculos.add(new Vehiculo(posx, posy, r_camion_grisU));
+        } else { //pendiente de mas vehiculos arriba
+            vehiculos.add(new Vehiculo(posx, posy, r_camion_grisU));
+        }
+    }
+
+    public void dibujarVehiculosAbajo(int posx, int posy) { // metodo para dibujar hacia abajo
+        int opcion = generaAleatorio(1, 2);
+
+        if (opcion == 1) {
+            vehiculos.add(new Vehiculo(posx, posy, r_camion_grisD));
+        } else { //pendiente de mas vehiculos abajo
+            vehiculos.add(new Vehiculo(posx, posy, r_camion_grisD));
+        }
+    }
+
     public void dibujarVehiculosDerecha(int posx, int posy) { // metodo para dibujar los vehiculos
         int opcion = generaAleatorio(1, 2);
 
@@ -86,15 +115,16 @@ public class Escenario extends JPanel implements KeyListener, ActionListener {
             vehiculos.add(new Vehiculo(-300, posy, r_camion_orangeR));
             vehiculos.add(new Vehiculo(-600, posy, r_moto_azulR));
             vehiculos.add(new Vehiculo(-900, posy, r_camion_verdeR));
+            vehiculos.add(new Vehiculo(-1200, posy, r_motoR));
         } else {
             vehiculos.add(new Vehiculo(posx, posy, r_camion_orangeR));
-            vehiculos.add(new Vehiculo(-600, posy, r_motoR));
+            vehiculos.add(new Vehiculo(0, posy, r_motoR));
             vehiculos.add(new Vehiculo(-300, posy, r_camion_verdeR));
-            vehiculos.add(new Vehiculo(-900, posy, r_moto_azulR));
-           
-
+            vehiculos.add(new Vehiculo(-600, posy, r_moto_azulR));
+            vehiculos.add(new Vehiculo(-1200, posy, r_camion_orangeR));
         }
     }
+
     public void dibujarVehiculosIzquierda(int posx, int posy) { // metodo para dibujar los vehiculos
         int opcion = generaAleatorio(1, 2);
 
@@ -113,8 +143,8 @@ public class Escenario extends JPanel implements KeyListener, ActionListener {
     }
 
     public void agregarMonedaAleatoria() {
-        int x = generaAleatorio(50, ancho - 100);
-        int y = generaAleatorio(50, alto - 100);
+        int x = generaAleatorio(50, ancho - 200);
+        int y = generaAleatorio(50, alto - 200);
 
         if (generamoneda == 1) {
             monedas.add(new Moneda(x, y, r_diamante));
@@ -125,17 +155,20 @@ public class Escenario extends JPanel implements KeyListener, ActionListener {
         }
     }
 
-    // timer para mover vehículos
+    // timer para mover vehiculos
     public void actionPerformed(ActionEvent e) {
 
         for (Vehiculo v : vehiculos) {
             if (v.ruta.contains("L")) {
                 v.moverVehiculosEjeXIza();
+            } else if (v.ruta.contains("U")) {
+                v.moverVehiculosEjeYArriba();
+            } else if (v.ruta.contains("D")) {
+                v.moverVehiculosEjeYAbajo();
             } else {
-                v.moverVehiculosEjeXDere(); // derecha
+                v.moverVehiculosEjeXDere();
             }
         }
-
         repaint();
     }
 
