@@ -1,9 +1,10 @@
-
 import java.awt.Graphics;
 import javax.swing.*;
+import java.awt.Rectangle;
 
 public class Jugador extends Coordenada {
     int anchoImg, altoImg;
+    boolean enColision = false; 
 
     Jugador(int x, int y, String ruta) {
         super(x, y, ruta);
@@ -22,35 +23,36 @@ public class Jugador extends Coordenada {
     }
 
     public void mover(int codigoTecla, int altoCuadro, int anchoCuadro) {
-        int velocidad = 5;
-        int anchoJugador = imagen.getWidth(null);
-        int altoJugador = imagen.getHeight(null);
+        int velocidad = 15;
 
         switch (codigoTecla) {
-            case 37: // Izquierda
+            case 37: // izquierda
                 x -= velocidad;
-                if (x < 0)
-                    x = 0;
+                if (x < 0) x = 0;
                 break;
-
-            case 38: // Arriba
+            case 38: // arriba
                 y -= velocidad;
-                if (y < 0)
-                    y = 0;
+                if (y < 0) y = 0;
                 break;
-
-            case 39: // Derecha
+            case 39: // derecha
                 x += velocidad;
-                if (x > anchoCuadro - anchoJugador)
-                    x = anchoCuadro - anchoJugador;
+                if (x > anchoCuadro - anchoImg)
+                    x = anchoCuadro - anchoImg;
                 break;
-
-            case 40: // Abajo
+            case 40: // abajo
                 y += velocidad;
-                if (y > altoCuadro - altoJugador)
-                    y = altoCuadro - altoJugador;
+                if (y > altoCuadro - altoImg)
+                    y = altoCuadro - altoImg;
                 break;
         }
     }
 
+    public Rectangle getRect() { 
+        return new Rectangle(x, y, anchoImg, altoImg);
+    }
+
+    public void setPosicion(int nuevaX, int nuevaY) { 
+        x = nuevaX;
+        y = nuevaY;
+    }
 }
