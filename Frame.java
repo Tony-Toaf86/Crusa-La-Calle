@@ -10,6 +10,7 @@ public class Frame extends JFrame {
 
         setSize(miPanel.getWidth(), miPanel.getHeight());
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setResizable(false);
         setLocationRelativeTo(null);
     }
 }

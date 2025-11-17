@@ -25,28 +25,28 @@ public class Vehiculo extends Coordenada {
 
     // metodos para mover vehiculos
     public void moverVehiculosEjeXDere() {
-        x += 10;
+        x += 5;
         if (x > 1000) {
             x = -anchoImg;
         }
     }
 
     public void moverVehiculosEjeXIza() {
-        x -= 10;
+        x -= 5;
         if (x < -anchoImg) {
             x = 1000; 
         }
     }
 
     public void moverVehiculosEjeYAbajo() {
-        y += 10;
+        y += 5;
         if (y > 600) { 
             y = -altoImg;
         }
     }
 
     public void moverVehiculosEjeYArriba() {
-        y -= 10;
+        y -= 5;
         if (y < -altoImg) {
             y = 600; 
         }
